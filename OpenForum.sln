@@ -1,0 +1,85 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenForum.Core", "OpenForum.Core\OpenForum.Core.csproj", "{FADD82A8-B07B-4908-B6C7-12654A89805E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenForum.UnitTests", "OpenForum.UnitTests\OpenForum.UnitTests.csproj", "{D7013C4B-985D-4902-ADE3-847364A35287}"
+	ProjectSection(ProjectDependencies) = postProject
+		{63485B21-6C82-477D-8220-3C8AAAB48EEF} = {63485B21-6C82-477D-8220-3C8AAAB48EEF}
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{EAC40CC8-67C1-40E4-A23B-8254A5B93350}"
+	ProjectSection(SolutionItems) = preProject
+		LocalTestRun.testrunconfig = LocalTestRun.testrunconfig
+		OpenForum.vsmdi = OpenForum.vsmdi
+		TODO.txt = TODO.txt
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenForum", "OpenForum\OpenForum.csproj", "{63485B21-6C82-477D-8220-3C8AAAB48EEF}"
+	ProjectSection(ProjectDependencies) = postProject
+		{0E30D1F1-50A1-44C6-AF6B-ED6476B294C2} = {0E30D1F1-50A1-44C6-AF6B-ED6476B294C2}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenForum.Views", "OpenForum.Views\OpenForum.Views.csproj", "{7AD10516-42A5-4EA1-80A3-1473ECDA1FC7}"
+EndProject
+Project("{2CFEAB61-6A3B-4EB8-B523-560B4BEEF521}") = "OpenForum.Views.Compiled", "OpenForum.Views.Compiled\OpenForum.Views.Compiled.wdproj", "{0E30D1F1-50A1-44C6-AF6B-ED6476B294C2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Simple", "Simple\Simple.csproj", "{223198AC-B275-46A1-8A91-38B09EA7284A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Samples", "Samples", "{4B9A8C72-2943-46FB-99D8-AA9A98C308A5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustomLook", "CustomLook\CustomLook.csproj", "{8E100F57-303F-4F0F-A614-9838946E04B6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustomUsers", "CustomUsers\CustomUsers.csproj", "{DC7B3241-E063-48A4-A984-AD72300D0FDF}"
+EndProject
+Global
+	GlobalSection(TestCaseManagementSettings) = postSolution
+		CategoryFile = OpenForum.vsmdi
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FADD82A8-B07B-4908-B6C7-12654A89805E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FADD82A8-B07B-4908-B6C7-12654A89805E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FADD82A8-B07B-4908-B6C7-12654A89805E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FADD82A8-B07B-4908-B6C7-12654A89805E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D7013C4B-985D-4902-ADE3-847364A35287}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D7013C4B-985D-4902-ADE3-847364A35287}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D7013C4B-985D-4902-ADE3-847364A35287}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D7013C4B-985D-4902-ADE3-847364A35287}.Release|Any CPU.Build.0 = Release|Any CPU
+		{63485B21-6C82-477D-8220-3C8AAAB48EEF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{63485B21-6C82-477D-8220-3C8AAAB48EEF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{63485B21-6C82-477D-8220-3C8AAAB48EEF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{63485B21-6C82-477D-8220-3C8AAAB48EEF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7AD10516-42A5-4EA1-80A3-1473ECDA1FC7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7AD10516-42A5-4EA1-80A3-1473ECDA1FC7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7AD10516-42A5-4EA1-80A3-1473ECDA1FC7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7AD10516-42A5-4EA1-80A3-1473ECDA1FC7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0E30D1F1-50A1-44C6-AF6B-ED6476B294C2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0E30D1F1-50A1-44C6-AF6B-ED6476B294C2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0E30D1F1-50A1-44C6-AF6B-ED6476B294C2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0E30D1F1-50A1-44C6-AF6B-ED6476B294C2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{223198AC-B275-46A1-8A91-38B09EA7284A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{223198AC-B275-46A1-8A91-38B09EA7284A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{223198AC-B275-46A1-8A91-38B09EA7284A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{223198AC-B275-46A1-8A91-38B09EA7284A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8E100F57-303F-4F0F-A614-9838946E04B6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8E100F57-303F-4F0F-A614-9838946E04B6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8E100F57-303F-4F0F-A614-9838946E04B6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8E100F57-303F-4F0F-A614-9838946E04B6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DC7B3241-E063-48A4-A984-AD72300D0FDF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DC7B3241-E063-48A4-A984-AD72300D0FDF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DC7B3241-E063-48A4-A984-AD72300D0FDF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DC7B3241-E063-48A4-A984-AD72300D0FDF}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{223198AC-B275-46A1-8A91-38B09EA7284A} = {4B9A8C72-2943-46FB-99D8-AA9A98C308A5}
+		{8E100F57-303F-4F0F-A614-9838946E04B6} = {4B9A8C72-2943-46FB-99D8-AA9A98C308A5}
+		{DC7B3241-E063-48A4-A984-AD72300D0FDF} = {4B9A8C72-2943-46FB-99D8-AA9A98C308A5}
+	EndGlobalSection
+EndGlobal
