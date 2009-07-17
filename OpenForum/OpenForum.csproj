@@ -69,6 +69,6 @@
   <PropertyGroup>
     <PostBuildEvent>del /q "$(TargetDir)$(TargetName).dll"
 del /q "$(TargetDir)$(TargetName).pdb"
-"$(SolutionDir)References\ILMerge.exe" /t:library /out:"$(TargetDir)$(TargetName).dll" "$(TargetDir)OpenForum.Core.dll" "$(TargetDir)HtmlAgilityPack.dll" "$(TargetDir)OpenForum.Views.Compiled.dll"</PostBuildEvent>
+"$(SolutionDir)References\ILMerge.exe" /t:library /out:"$(TargetDir)$(TargetName).dll" "$(TargetDir)OpenForum.Core.dll" "$(TargetDir)HtmlAgilityPack.dll" "$(TargetDir)OpenForum.Views.Compiled.dll" "$(TargetDir)Lucene.Net.dll"</PostBuildEvent>
   </PropertyGroup>
 </Project>
