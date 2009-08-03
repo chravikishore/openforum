@@ -1,3 +1,4 @@
+add logic to display "latest post" in the index page
 improve the lucene code
 make lucene work w/ plurals/stems (snowball.net)
 make user name links "hot" on the index page
