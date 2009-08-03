@@ -19,29 +19,43 @@
     </div>
     
     <div class="openforum_message"><%= Model.Message %></div>
-        
-    <table class="openforum_maincontent">
+      
+    <div class="openforum_maincontent">
         
         <% foreach(var item in Model.Posts ?? new Post[0]) { %>
         
-        <tr>
-            <td class="openforum_title"><%= Html.ActionLink(item.Title, "view", new { id = item.Id, title = ForumViewHelper.ToUrlFriendlyTitle(item.Title) })%></td>
-            <td class="openforum_user">
-                <div>created by <%= Html.Encode(item.CreatedBy.Username) %></div>
-                <div><%= item.CreatedDate.ToString("MM/dd/yyyy hh:mm tt") %></div>
-            </td>
-            <td class="openforum_modified">
-                <div>last post by <%= Html.Encode(item.LastPostBy.Username) %></div>
-                <div><%= item.LastPostDate.ToString("MM/dd/yyyy hh:mm tt") %></div>
-            </td>
-            <td class="openforum_replies">Replies: <%= item.Replies.Length %></td>
-            <td class="openforum_views">Views: <%= item.ViewCount %></td>
-        </tr>
+        <div class="openforum_item">
+            <div class="openforum_stats">
+                <div>
+                    <div><%= item.LastPostDate.ToString("M/d/yy") %></div>
+                    <div><%= item.LastPostDate.ToString("h:mm tt") %></div>
+                </div>
+                <div>
+                    <div><%= item.ViewCount%> Views</div>
+                    <div><%= item.Replies.Length %> Posts</div>
+                </div>
+            </div>
+            <div>
+                <h2 class="openforum_title">
+                    <%= Html.ActionLink(item.Title, "view", new { id = item.Id, title = ForumViewHelper.ToUrlFriendlyTitle(item.Title) })%>
+                </h2>
+            </div>
+            <div class="openforum_postpreview">
+                First post: <%= Html.Encode(item.CreatedBy.Username) %> wrote: <%= item.Body %>
+            </div>
+            <div class="openforum_postpreview">
+                Latest post: <%= Html.Encode(item.LastPostBy.Username) %> wrote: FIX THIS!!!!!
+            </div>
+            <span></span>
+        </div>
+        
+        <div class="openforum_clear"></div>
         
         <% } %>
-        
-    </table>
     
+    </div>
+        
+        
     <div class="openforum_index_paging">
         <% if ((Model.Posts ?? new Post[0]).Count() > 0) { %>
             <span>Page <%= Model.CurrentPage + 1 %> of <%= Model.TotalPages %></span>

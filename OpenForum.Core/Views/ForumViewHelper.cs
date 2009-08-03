@@ -57,10 +57,10 @@ namespace OpenForum.Core.Views
             return @"
 <style type=""text/css"">    
 .openforum_maincontent { width: 100%; }
+.openforum_item { padding: 0.8em 0 0.8em 0; }
 .openforum_actions, .openforum_index_paging { margin: 13px 0; }
-.openforum_title { font-weight: bold; }
-div.openforum_title { font-size: 1.4em; padding: 0; margin: 0 0 10px 0; }
-.openforum_user, .openforum_modified, .openforum_replies, .openforum_views, .openforum_body, .openforum_title { padding: 10px; }
+.openforum_title { font-weight: bold; display: inline; font-size: 1.3em; padding: 0; }
+.openforum_user, .openforum_modified, .openforum_replies, .openforum_views, .openforum_body { padding: 10px; }
 .openforum_user, .openforum_user_image, .openforum_modified, .openforum_replies, .openforum_views { font-size: 0.75em; vertical-align: top; }
 .openforum_user, .openforum_modified { width: 150px; }
 .openforum_user_image { width:30px; height:30px; }
@@ -69,6 +69,9 @@ input[type=""text""].openforum_textbox { width: 800px; margin: 0 0 10px 0; }
 .openforum_textarea { width: 800px; height: 400px; margin: 0 0 10px 0; } 
 .openforum_message { padding: 10px 0 10px 0; }
 .openforum_index_paging form { display: inline }
+.openforum_stats { float: left; text-align: center; background-color: #EFF0F3; margin-right: 0.7em; padding: 4px; }
+.openforum_postpreview { overflow: hidden; height: 1.3em; }
+.openforum_clear { clear: both; }
 </style>
 ";
         }
