@@ -1,0 +1,28 @@
+﻿@using OpenForum.Core.Views;
+
+@model OpenForum.Core.ViewModels.Interfaces.IPostViewModel
+
+<div class="openforum_container">
+    
+    @(Model.IncludeDefaultStyles ? Html.Raw(ForumViewHelper.GetDefaultStyles()) : MvcHtmlString.Empty)
+    @(Model.IncludeValidationSummary ? Html.ValidationSummary() : MvcHtmlString.Empty)
+    @(Model.IncludeWysiwygEditor ? Html.Raw(ForumViewHelper.GetWysiwygEditorText(Url, "body")) : MvcHtmlString.Empty)
+    
+    @using (Html.BeginForm()) 
+    { 
+    <div class="openforum_maincontent">
+    
+        <label>Title</label>
+        <div>@Html.TextBox("title", Model.Post.Title, new { @class = "openforum_textbox" })</div>
+        
+        <label>Question</label>
+        <div>@Html.TextArea("body", Model.Post.Body, new { @class = "openforum_textarea" })</div>
+        
+        <div class="openforum_actions"><input type="submit" value="Submit" /> @Html.ActionLink("Cancel", "Index")</div>
+    
+    </div>
+
+    @Html.Hidden("id", Model.Post.Id)
+    }
+    
+</div>

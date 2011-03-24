@@ -1,11 +1,14 @@
-convert to Hg
-add logic to display "latest post" in the index page
+
+finish TODOs
+re-setup the example projects
+FIX HTML!!!!
+get better default html (See CoolForum html)
+get the UserRepository reference out of the model objects
 improve the lucene code
+fix obsolete calls (lucene)
 make lucene work w/ plurals/stems (snowball.net)
 make user name links "hot" on the index page
 create wysiwyg plugin architecture
-display "post body" and "last response" text on the index page
-get better default html (See CoolForum html)
 add a "reply" editor at the bottom of the "View" page (instead of having to go to another window)
 add xml documentation comments
 load test

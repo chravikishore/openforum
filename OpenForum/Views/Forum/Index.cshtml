@@ -1,0 +1,87 @@
+﻿@using OpenForum.Core;
+@using OpenForum.Core.Models;
+@using OpenForum.Core.Views;
+
+@model OpenForum.Core.ViewModels.Interfaces.IIndexViewModel
+           
+<div class="openforum_container">
+
+    @(Model.IncludeDefaultStyles ? Html.Raw(ForumViewHelper.GetDefaultStyles()) : MvcHtmlString.Empty)
+    @(Model.IncludeValidationSummary ? Html.ValidationSummary() : MvcHtmlString.Empty)
+
+    <div class="openforum_actions">
+        @Html.ActionLink("Write A New Post", "Post")
+    </div>
+    <div class="openforum_search">
+        @using (Html.BeginForm())
+        {
+            <text>Search:</text> @Html.TextBox("searchQuery") <input type="submit" value="go" />
+        }
+    </div>
+    <div class="openforum_message">@Model.Message</div>
+    <div class="openforum_maincontent">
+        @foreach (var item in Model.Posts ?? new Post[0])
+        {
+        
+            <div class="openforum_item">
+                <div class="openforum_stats">
+                    <div>
+                        <div>@item.LastPostDate.ToString("M/d/yy")</div>
+                        <div>@item.LastPostDate.ToString("h:mm tt")</div>
+                    </div>
+                    <div>
+                        <div>@item.ViewCount Views</div>
+                        <div>@item.Replies.Count Posts</div>
+                    </div>
+                </div>
+                <div>
+                    <h2 class="openforum_title">
+                        @Html.ActionLink(item.Title, "view", new { id = item.Id, title = ForumViewHelper.ToUrlFriendlyTitle(item.Title) })
+                    </h2>
+                </div>
+                <div class="openforum_postpreview">
+                    Original post: @item.CreatedBy.Username wrote - @Html.Raw(item.Body.RemoveAllMarkup().WithMaxLength(200))
+                </div>
+
+                @if (item.Replies.Count > 0)
+                { 
+                    <div class="openforum_postpreview">
+                        Latest post: @item.LastPostBy.Username wrote - @Html.Raw(item.GetLatestResponse().RemoveAllMarkup().WithMaxLength(200))
+                    </div>
+                }
+                
+                <span></span>
+            </div>
+        
+            <div class="openforum_clear">
+            </div>
+        
+        }
+    </div>
+    <div class="openforum_index_paging">
+        @if ((Model.Posts ?? new Post[0]).Count() > 0)
+        {
+            <span>Page @(Model.CurrentPage + 1) of @Model.TotalPages</span>
+        }
+        
+        @if (Model.CurrentPage > 0)
+        {
+            using (Html.BeginForm())
+            {
+            <input type="submit" value="&lt;&lt;&lt;" />
+            <input type="hidden" name="searchQuery" value="@Model.SearchQuery" />
+            <input type="hidden" name="page" value="@(Model.CurrentPage - 1)" />
+            }
+        }
+        
+        @if (Model.CurrentPage < Model.TotalPages - 1)
+        {
+            using (Html.BeginForm())
+            {
+            <input type="submit" value="&gt;&gt;&gt;" />
+            <input type="hidden" name="searchQuery" value="@Model.SearchQuery" />
+            <input type="hidden" name="page" value="@(Model.CurrentPage + 1)" />
+            }
+        }
+    </div>
+</div>

@@ -21,7 +21,7 @@ namespace OpenForum.UnitTests.Models
         {
             Utility.SetCurrentUser("user");
 
-            User user = new DefaultUserRepository().FindCurrentUser();
+            User user = new UserRepository().FindCurrentUser();
 
             Assert.AreEqual("user", user.Id);
             Assert.AreEqual("user", user.Username);
@@ -30,7 +30,7 @@ namespace OpenForum.UnitTests.Models
         [TestMethod]
         public void Default_Repository_Returns_User_By_Id()
         {
-            User user = new DefaultUserRepository().FindById("foundUser");
+            User user = new UserRepository().FindById("foundUser");
 
             Assert.AreEqual("foundUser", user.Id);
             Assert.AreEqual("foundUser", user.Username);

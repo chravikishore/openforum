@@ -1,55 +1,44 @@
-﻿using System;
-using System.Text;
+﻿using System.Collections.Generic;
 using System.IO;
 using System.Web;
 using System.Web.Mvc;
-using System.Web.Routing;
-using System.Web.UI;
+using System.Web.WebPages;
 using System.Xml;
 using Moq;
 
 namespace OpenForum.UnitTests.Views
 {
-    public class ViewHelper : ViewPage
-    {
-        private StringWriter _writer = new StringWriter();
-        public ViewUserControl Control { get; private set; }
+	public class ViewHelper<T> where T : WebViewPage, new()
+	{
+		public T Control { get; private set; }
 
-        public ViewHelper(string view, object model)
-        {
-            Mock<HttpRequestBase> request = new Mock<HttpRequestBase>();
-            Mock<HttpResponseBase> response = new Mock<HttpResponseBase>();
+		public ViewHelper(object model)
+		{
+			Control = new T();
 
-            response.Expect(x => x.Write(It.IsAny<string>())).Callback<string>(x => _writer.Write(x));
+			ViewContext viewContext = new ViewContext(new ControllerContext(), Mock.Of<IView>(), new ViewDataDictionary(model), new TempDataDictionary(), new StringWriter());
 
-            Mock<HttpContextBase> context = new Mock<HttpContextBase>();
-            context.ExpectGet(x => x.Request).Returns(request.Object);
-            context.ExpectGet(x => x.Response).Returns(response.Object);
+			Mock<HttpContextBase> context = new Mock<HttpContextBase>();
+			context.SetupGet(x => x.Request).Returns(Mock.Of<HttpRequestBase>());
+			context.SetupGet(x => x.Response).Returns(Mock.Of<HttpResponseBase>());
+			context.SetupGet(x => x.Items).Returns(new Dictionary<object, object>());
 
-            RequestContext requestContext = new RequestContext(context.Object, new RouteData());
-            Url = new UrlHelper(requestContext);
-            
-            Type type = Type.GetType(string.Format("ASP.views_forum_{0}_ascx, OpenForum, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null", view));
-            ViewUserControl control = (ViewUserControl)Activator.CreateInstance(type);
+			viewContext.HttpContext = context.Object;
 
-            control.ViewContext = new ViewContext();
-            control.ViewData = new ViewDataDictionary(model);
-            control.ViewContext.HttpContext = context.Object;
+			Control.ViewContext = viewContext;
+			Control.ViewData = viewContext.ViewData;
+			Control.InitHelpers();
+		}
 
-            Controls.Add(control);
+		public XmlDocument RenderToXml()
+		{
+			XmlDocument result = new XmlDocument();
 
-            control.GetType().GetMethod("__BuildControlTree", System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic).Invoke(control, new [] { control });
-            Control = control;
-        }
+			StringWriter writer = new StringWriter();
+			Control.ExecutePageHierarchy(new WebPageContext(), writer);
+			result.LoadXml(writer.ToString());
 
-        public XmlDocument RenderToXml()
-        {
-            Render(new HtmlTextWriter(_writer));
-
-            XmlDocument xml = new XmlDocument();
-            xml.LoadXml(_writer.ToString());
-
-            return xml;
-        }
-    }
+			return result;
+		}
+	}
 }
